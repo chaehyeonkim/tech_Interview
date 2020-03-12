@@ -91,7 +91,9 @@ class MethodOverloadingFail {
         - 추상 클래스의 추상 메소드를 서브 클래스에서 구체화하여 그 기능을 확장하는데 목적이 있다.
         ```java
         class Circle extends Shape {
-        public void draw() { System.out.println("Circle"); } // 추상 메서드 (오버라이딩)
+            public void draw() { // 추상 메서드 (오버라이딩)
+                System.out.println("Circle"); 
+             } 
         }
         ```
         
@@ -124,17 +126,63 @@ class MethodOverloadingFail {
         }
         ```
 
-    - 추상 클래스와 인터페이스의 공통점
-        - 객체 생성 불가
-        - 선언만 있고 구현 내용이 없다
-        - 자식 클래스가 구체적인 동작을 구현하도록 책임을 위임함다.
-    - 차이점
-        - 추상클래스는 클래스지만 인터페이스는 클래스가 아니다.
-        - 추상클래스는 단일 상속이지만 인터페이스는 다중 상속이 가능하다.
-        - 추상 클래스는 "is a kind of" 인터페이스는 "can do this"
-            - 추상 클래스 : Appliances-TV, Refrigerator(TV is a kind of appliances)
-            - 인터페이스 : Flyable - Plane,Bird(Bird can fly)
 
+- 추상 클래스와 인터페이스의 공통점
+    - 객체 생성 불가
+    - 선언만 있고 구현 내용이 없다
+    - 자식 클래스가 구체적인 동작을 구현하도록 책임을 위임함다.
+- 차이점
+    - 추상클래스는 클래스지만 인터페이스는 클래스가 아니다.
+    - 추상클래스는 단일 상속이지만 인터페이스는 다중 상속이 가능하다.
+    - 추상 클래스는 "is a kind of" 인터페이스는 "can do this"
+        - 추상 클래스 : Appliances-TV, Refrigerator(TV is a kind of appliances)
+        - 인터페이스 : Flyable - Plane,Bird(Bird can fly)
+
+        
+### Wrapper 클래스
+ - primitive type(int, long, float, double, short, byte, boolean, char) 을 객체화한 형태
+    ```java
+    Integer i=new Integer(10);//정수 10의 객체화
+    int ii=i.intValue();//ii=10
+    
+    Chacter c=new Character('c');// 문자 c의 객체화
+    char cc=c.charValue(); //cc='c'
+    ```
+  - 기본 타입의 값을 Wrapper 객체로 변환하는 것을 박싱(boxing)이라하고, 반대의 경우를 언박싱(unboxing)이라고 한다.
+    - boxing : Integer i =new Integer(10);
+    - unboxing : int n=i.intValue();
+    ```
+    Integer i=10;//자동 박싱
+    int ten=i;//자동 언박싱
+    ```
+    
+### 제네릭 Generic
+- 모든 타입을 다룰 수 있도록 일반화된 매개변수로 클래스나 메서드 선언
+    - 제네릭 Stack<E>를 특정 타입으로 구체화한 경우
+    ```java
+    class Stack<E> {
+        void push(E element) {...}
+        E pop() {...}
+    }
+    class Stack<Integer> {
+        void push(Integer element) {...}
+        Integer pop() {...}
+    }
+    ```
+### 자바 컬렉션 Collection
+ - generic기법으로 만들어져 있다.
+ - 가변의 크기
+ - List
+     - 데이터를 중복해서 포함 가능
+     - 순서가 있는 collection
+     - Vector : 내부에서 자동으로 동기화처리
+     - ArrayList : vector보다 속도가 빨라 단일 스레드에 효과적
+ - Set
+    - 데이터 중복 불가
+    - 데이터 순서 의미 없음(집합)
+ - Map
+    - 검색할 수 있는 인터페이스
+    - key와 value의 형태
 
 
 
